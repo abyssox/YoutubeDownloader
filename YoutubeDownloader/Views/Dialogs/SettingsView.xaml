@@ -17,12 +17,12 @@
             Margin="16"
             FontSize="17"
             Foreground="{DynamicResource PrimaryTextBrush}"
-            Text="Settings" />
+            Text="Einstellungen" />
 
         <!--  Max concurrent downloads  -->
         <StackPanel>
             <TextBlock Margin="16,8">
-                <Run Text="Maximum concurrent downloads:" />
+                <Run Text="Maximale Anzahl gleichzeitiger Downloads:" />
                 <Run Foreground="{DynamicResource PrimaryTextBrush}" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
             </TextBlock>
             <Slider
@@ -52,7 +52,7 @@
             Margin="8"
             HorizontalAlignment="Right"
             Command="{s:Action Close}"
-            Content="SAVE"
+            Content="SPEICHERN"
             IsCancel="True"
             IsDefault="True"
             Style="{DynamicResource MaterialDesignFlatButton}" />

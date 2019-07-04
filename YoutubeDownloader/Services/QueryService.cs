@@ -86,7 +86,7 @@ namespace YoutubeDownloader.Services
             {
                 var channel = await _youtubeClient.GetChannelAsync(query.Value);
                 var videos = await _youtubeClient.GetChannelUploadsAsync(query.Value);
-                var title = $"Channel uploads: {channel.Title}";
+                var title = $"Kabal uploads: {channel.Title}";
 
                 return new ExecutedQuery(query, title, videos);
             }
@@ -96,7 +96,7 @@ namespace YoutubeDownloader.Services
             {
                 var channelId = await _youtubeClient.GetChannelIdAsync(query.Value);
                 var videos = await _youtubeClient.GetChannelUploadsAsync(channelId);
-                var title = $"User uploads: {query.Value}";
+                var title = $"Benutzer uploads: {query.Value}";
 
                 return new ExecutedQuery(query, title, videos);
             }
@@ -105,12 +105,12 @@ namespace YoutubeDownloader.Services
             if (query.Type == QueryType.Search)
             {
                 var videos = await _youtubeClient.SearchVideosAsync(query.Value, 5);
-                var title = $"Search: {query.Value}";
+                var title = $"Suche: {query.Value}";
 
                 return new ExecutedQuery(query, title, videos);
             }
 
-            throw new ArgumentException($"Could not parse query [{query}].", nameof(query));
+            throw new ArgumentException($"Suchanfrage konnte nicht verarbeitet werden: [{query}].", nameof(query));
         }
 
         public Task<ExecutedQuery> ExecuteQueryAsync(string query) => ExecuteQueryAsync(ParseQuery(query));

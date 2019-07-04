@@ -40,7 +40,7 @@ namespace YoutubeDownloader.ViewModels.Framework
             return dialogScreen.DialogResult;
         }
 
-        public string PromptSaveFilePath(string filter = "All files|*.*", string initialFilePath = "")
+        public string PromptSaveFilePath(string filter = "Alle Dateien|*.*", string initialFilePath = "")
         {
             // Create dialog
             var dialog = new VistaSaveFileDialog

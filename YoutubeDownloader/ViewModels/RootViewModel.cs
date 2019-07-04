@@ -64,8 +64,8 @@ namespace YoutubeDownloader.ViewModels
                 {
                     // Show notification
                     Notifications.Enqueue(
-                        $"Update to YoutubeDownloader v{updateVersion} will be installed when you exit",
-                        "INSTALL NOW", () =>
+                        $"Update auf YoutubeDownloader v{updateVersion} wird beim beenden des Programms installiert",
+                        "JETZT INSTALLIEREN", () =>
                         {
                             _updateService.FinalizeUpdate(true);
                             RequestClose();
@@ -74,7 +74,7 @@ namespace YoutubeDownloader.ViewModels
             }
             catch
             {
-                Notifications.Enqueue("Failed to perform application auto-update");
+                Notifications.Enqueue("Das automatische Update konnte nicht installiert werden!");
             }
         }
 
@@ -138,8 +138,8 @@ namespace YoutubeDownloader.ViewModels
                 if (executedQuery.Videos.Count <= 0)
                 {
                     // Create dialog
-                    var dialog = _viewModelFactory.CreateMessageBoxViewModel("Nothing found",
-                        "Couldn't find any videos based on the query or URL you provided");
+                    var dialog = _viewModelFactory.CreateMessageBoxViewModel("Nichts gefunden",
+                        "Es wurde kein Video gefunden das zu Ihrer Suchanfrage oder URL passt!");
 
                     // Show dialog
                     await _dialogManager.ShowDialogAsync(dialog);
@@ -193,7 +193,7 @@ namespace YoutubeDownloader.ViewModels
             catch (Exception ex)
             {
                 // Create dialog
-                var dialog = _viewModelFactory.CreateMessageBoxViewModel("Error", ex.Message);
+                var dialog = _viewModelFactory.CreateMessageBoxViewModel("Fehler", ex.Message);
 
                 // Show dialog
                 await _dialogManager.ShowDialogAsync(dialog);
