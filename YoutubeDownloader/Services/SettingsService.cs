@@ -7,7 +7,7 @@ namespace YoutubeDownloader.Services
     {
         public int MaxConcurrentDownloadCount { get; set; } = 2;
 
-        public string LastFormat { get; set; }
+        public string LastFormat { get; set; } = "mp3";
 
         public string DefaultDownloadDirectory { get; set; }
 
