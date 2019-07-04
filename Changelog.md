@@ -1,3 +1,11 @@
+### v1.5.3 (04-Jul-2019)
+
+- Added a global setting for default download folder
+- mp3 is the default format if you start the app for the first time
+- Updated ffmpeg to v4.1
+- German translation
+- small ui changes
+
 ### v1.5.2 (29-Jun-2019)
 
 - Fixed an issue where some videos were missing from playlists. Updated to YoutubeExplode v4.7.4.
