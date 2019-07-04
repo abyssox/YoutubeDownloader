@@ -1,8 +1,8 @@
 # YoutubeDownloader
 
-[![Build](https://img.shields.io/appveyor/ci/Tyrrrz/YoutubeDownloader/master.svg)](https://ci.appveyor.com/project/Tyrrrz/YoutubeDownloader)
-[![Release](https://img.shields.io/github/release/Tyrrrz/YoutubeDownloader.svg)](https://github.com/Tyrrrz/YoutubeDownloader/releases)
-[![Downloads](https://img.shields.io/github/downloads/Tyrrrz/YoutubeDownloader/total.svg)](https://github.com/Tyrrrz/YoutubeDownloader/releases)
+[![Build](https://img.shields.io/appveyor/ci/calis2002/YoutubeDownloader/master.svg)](https://ci.appveyor.com/project/calis2002/YoutubeDownloader)
+[![Release](https://img.shields.io/github/release/calis2002/YoutubeDownloader.svg)](https://github.com/calis2002/YoutubeDownloader/releases)
+[![Downloads](https://img.shields.io/github/downloads/calis2002/YoutubeDownloader/total.svg)](https://github.com/calis2002/YoutubeDownloader/releases)
 [![Donate](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/tyrrrz)
 [![Donate](https://img.shields.io/badge/buymeacoffee-donate-yellow.svg)](https://buymeacoffee.com/tyrrrz)
 
@@ -10,8 +10,8 @@ YoutubeDownloader is an application that lets you download videos from YouTube. 
 
 ## Download
 
-- [Stable releases](https://github.com/Tyrrrz/YoutubeDownloader/releases)
-- [Continuous integration](https://ci.appveyor.com/project/Tyrrrz/YoutubeDownloader)
+- [Stable releases](https://github.com/calis2002/YoutubeDownloader/releases)
+- [Continuous integration](https://ci.appveyor.com/project/calis2002/YoutubeDownloader)
 
 ## Features
 
