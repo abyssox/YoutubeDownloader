@@ -1,4 +1,4 @@
-### v1.5.3 (04-Jul-2019)
+### v1.5.3.1 (04-Jul-2019)
 
 - Added a global setting for default download folder
 - mp3 is the default format if you start the app for the first time
