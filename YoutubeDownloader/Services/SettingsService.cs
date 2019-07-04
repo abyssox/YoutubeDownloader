@@ -1,4 +1,5 @@
-﻿using Tyrrrz.Settings;
+﻿using System.ComponentModel;
+using Tyrrrz.Settings;
 
 namespace YoutubeDownloader.Services
 {
@@ -7,6 +8,8 @@ namespace YoutubeDownloader.Services
         public int MaxConcurrentDownloadCount { get; set; } = 2;
 
         public string LastFormat { get; set; }
+
+        public string DefaultDownloadDirectory { get; set; }
 
         public SettingsService()
         {

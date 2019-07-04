@@ -34,7 +34,20 @@
                 Value="{Binding MaxConcurrentDownloads}" />
         </StackPanel>
 
-        <!--  Save button  -->
+      <!--  Default download directory  -->
+      <StackPanel>
+        <TextBlock Text="Standard Download Verzeichnis: " Margin="16,8" />
+        <TextBox Margin="16,8" IsReadOnly="True" Text="{Binding DefaultDownloadDirectory}" />
+        <Button x:Name = "btBrowse"
+            Content = "AUSWÄHLEN"
+            Click = "OnClickBrowse"
+            ClickMode = "Press"
+            Margin = "10"
+            Width = "150"
+            HorizontalAlignment = "Center"/>
+      </StackPanel>
+
+      <!--  Save button  -->
         <Button
             Margin="8"
             HorizontalAlignment="Right"

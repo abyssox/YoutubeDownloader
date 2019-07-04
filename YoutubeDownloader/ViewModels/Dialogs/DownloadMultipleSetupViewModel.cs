@@ -46,12 +46,20 @@ namespace YoutubeDownloader.ViewModels.Dialogs
 
         public void Confirm()
         {
-            // Prompt user for output directory path
-            var dirPath = _dialogManager.PromptDirectoryPath();
+            var dirPath = "";
 
-            // If canceled - return
-            if (dirPath.IsNullOrWhiteSpace())
-                return;
+            // Check if Default Download Directory is set in settings, otherwise prompt user for output directory path
+            if (_settingsService.DefaultDownloadDirectory.IsNullOrEmpty())
+            { 
+                dirPath = _dialogManager.PromptDirectoryPath();
+
+                // If canceled - return
+                if (dirPath.IsNullOrWhiteSpace())
+                    return;
+            } else
+            {
+                dirPath = _settingsService.DefaultDownloadDirectory;
+            }
 
             // Save last used format
             _settingsService.LastFormat = SelectedFormat;

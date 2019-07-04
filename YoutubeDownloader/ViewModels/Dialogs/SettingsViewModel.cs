@@ -14,6 +14,12 @@ namespace YoutubeDownloader.ViewModels.Dialogs
             set => _settingsService.MaxConcurrentDownloadCount = value.Clamp(1, 10);
         }
 
+        public string DefaultDownloadDirectory
+        {
+            get => _settingsService.DefaultDownloadDirectory;
+            set => _settingsService.DefaultDownloadDirectory = value;
+        }
+
         public SettingsViewModel(SettingsService settingsService)
         {
             _settingsService = settingsService;
