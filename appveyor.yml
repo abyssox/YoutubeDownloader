@@ -19,9 +19,9 @@ artifacts:
 deploy:
 - provider: GitHub
   auth_token:
-    secure: sjQHWRw29AMiVMn3MtidtWnAzAf1mJ+mkJ/7h1B9TIAHhkFrqwMK7LtXV+uNJ9AO
+    secure: kWSlARaocznIRJ1l4M4JRtV62KQpH7Z49qgCuKwWYUPab2HJuEwe6EdpfTC5ODqK
   artifact: YoutubeDownloader.zip
-  description: '[Changelog](https://github.com/Tyrrrz/YoutubeDownloader/blob/master/Changelog.md)'
+  description: '[Changelog](https://github.com/calis2002/YoutubeDownloader/blob/master/Changelog.md)'
   on:
-    branch: master
-    appveyor_repo_tag: true
+    appveyor_repo_tag: true	
+  tag: $(APPVEYOR_REPO_TAG_NAME)
