@@ -65,6 +65,7 @@
                             Grid.Column="1"
                             Margin="0,6,6,6"
                             Padding="4"
+                            ToolTip="Suchen"
                             Command="{s:Action ProcessQuery}"
                             IsDefault="True"
                             Style="{DynamicResource MaterialDesignFlatButton}">
@@ -81,6 +82,7 @@
                     Grid.Column="1"
                     Margin="6"
                     Padding="4"
+                    ToolTip="Einstellungen"
                     Command="{s:Action ShowSettings}"
                     Style="{DynamicResource MaterialDesignFlatDarkButton}">
                     <materialDesign:PackIcon
@@ -95,7 +97,7 @@
                 Grid.Row="1"
                 Background="Transparent"
                 IsIndeterminate="{Binding IsProgressIndeterminate}"
-                Value="{Binding ProgressManager.Progress, Mode=OneWay}" />
+                Value="{Binding ProgressManager.Progress, Mode=OneWay}" Height="5" Foreground="#FF25F985" />
 
             <!--  Content  -->
             <Grid Grid.Row="2">
