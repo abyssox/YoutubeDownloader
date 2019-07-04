@@ -1,3 +1,6 @@
+### v1.5.4 (04-Jul-2019)
+- Fixed an issue where an attempt to download from channel always resulted in an error. Updated to YoutubeExplode v4.7.5
+
 ### v1.5.3.1 (04-Jul-2019)
 
 - Added a global setting for default download folder
