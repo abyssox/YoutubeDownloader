@@ -64,7 +64,7 @@ namespace YoutubeDownloader.ViewModels
                 {
                     // Show notification
                     Notifications.Enqueue(
-                        $"Update auf YoutubeDownloader v{updateVersion} wird beim beenden des Programms installiert",
+                        $"Update auf YoutubeDownloader v{updateVersion} wird beim beenden des Programms installiert.",
                         "JETZT INSTALLIEREN", () =>
                         {
                             _updateService.FinalizeUpdate(true);
