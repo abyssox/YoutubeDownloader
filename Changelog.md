@@ -1,3 +1,6 @@
+### v1.5.4.1 (05-Jul-2019)
+- Updated ffmpeg to v4.1.3 and change build source to https://ffmpeg.zeranoe.com/builds/win64/static
+
 ### v1.5.4 (04-Jul-2019)
 - Fixed an issue where an attempt to download from channel always resulted in an error. Updated to YoutubeExplode v4.7.5
 
