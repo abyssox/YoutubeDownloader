@@ -1,10 +1,17 @@
+### v1.5.5 (27-Jul-2019)
+
+- Fixed an issue where some videos failed to download.
+
 ### v1.5.4.2 (10-Jul-2019)
+
 - Fixed an issue where an attempt to download any video resulted in an error. Updated to YoutubeExplode v4.7.6.
 
 ### v1.5.4.1 (05-Jul-2019)
+
 - Updated ffmpeg to v4.1.3 and change build source to https://ffmpeg.zeranoe.com/builds/win64/static
 
 ### v1.5.4 (04-Jul-2019)
+
 - Fixed an issue where an attempt to download from channel always resulted in an error. Updated to YoutubeExplode v4.7.5
 
 ### v1.5.3.1 (04-Jul-2019)
