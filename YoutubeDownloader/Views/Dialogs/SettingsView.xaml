@@ -6,6 +6,7 @@
     xmlns:dialogs="clr-namespace:YoutubeDownloader.ViewModels.Dialogs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:s="https://github.com/canton7/Stylet"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     MinWidth="300"
     d:DataContext="{d:DesignInstance Type=dialogs:SettingsViewModel}"
     d:DesignHeight="450"
@@ -20,7 +21,7 @@
             Text="Einstellungen" />
 
         <!--  Max concurrent downloads  -->
-        <StackPanel>
+        <StackPanel Background="Transparent">
             <TextBlock Margin="16,8">
                 <Run Text="Maximale Anzahl gleichzeitiger Downloads:" />
                 <Run Foreground="{DynamicResource PrimaryTextBrush}" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
@@ -35,7 +36,10 @@
         </StackPanel>
         
         <!--  Tag injection  -->
-        <DockPanel LastChildFill="False">
+        <DockPanel 
+            LastChildFill="False"
+            Background="Transparent"
+            ToolTip="Media Informationen können automatisch vom Video abgeleitet und der Download Datei hinzugefügt werden">
             <TextBlock
                 Margin="16,8"
                 DockPanel.Dock="Left"
@@ -45,21 +49,51 @@
                 DockPanel.Dock="Right"
                 IsChecked="{Binding ShouldInjectTags}" />
         </DockPanel>
-
-      <!--  Default download directory  -->
-      <StackPanel>
-        <TextBlock Text="Standard Download Verzeichnis: " Margin="16,8" />
-        <TextBox Margin="16,8" IsReadOnly="True" Text="{Binding DefaultDownloadDirectory}" />
-        <Button x:Name = "btBrowse"
+        
+        <!--  Default file name template  -->
+        <StackPanel>
+            <TextBlock Text="Standard Download Dateiname: " Margin="16,8" />
+            <TextBox
+            Margin="16,8"
+            materialDesign:HintAssist.IsFloating="True"
+            Text="{Binding FileNameTemplate}">
+            <TextBox.ToolTip>
+                <TextBlock>
+                    <Run Text="Vorlage für den Download Dateiname" />
+                    <LineBreak />
+                    <LineBreak />
+                    <Run Text="Verfügbare Variablen:" />
+                    <LineBreak />
+                    <Run Text="$num" FontWeight="SemiBold" />
+                    <Run Text="- Position des Videos in der Ergebnisliste (falls verfügbar)" />
+                    <LineBreak />
+                    <Run Text="$title" FontWeight="SemiBold" />
+                    <Run Text="- Titel des Videos" />
+                    <LineBreak />
+                    <Run Text="$author" FontWeight="SemiBold" />
+                    <Run Text="- Author des Videos" />
+                    <LineBreak />
+                    <Run Text="$uploadDate" FontWeight="SemiBold" />
+                    <Run Text="- Uploaddatum des Videos" />
+                </TextBlock>
+            </TextBox.ToolTip>
+            </TextBox>
+        </StackPanel>
+        
+        <!--  Default download directory  -->
+        <StackPanel>
+            <TextBlock Text="Standard Download Verzeichnis: " Margin="16,8" />
+            <TextBox Margin="16,8" IsReadOnly="True" Text="{Binding DefaultDownloadDirectory}" />
+            <Button x:Name = "btBrowse"
             Content = "AUSWÄHLEN"
             Click = "OnClickBrowse"
             ClickMode = "Press"
             Margin = "10"
             Width = "150"
             HorizontalAlignment = "Center"/>
-      </StackPanel>
+        </StackPanel>
 
-      <!--  Save button  -->
+        <!--  Save button  -->
         <Button
             Margin="8"
             HorizontalAlignment="Right"

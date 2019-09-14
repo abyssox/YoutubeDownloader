@@ -1,11 +1,13 @@
-﻿using System.ComponentModel;
-using Tyrrrz.Settings;
+﻿using Tyrrrz.Settings;
+using YoutubeDownloader.Internal;
 
 namespace YoutubeDownloader.Services
 {
     public class SettingsService : SettingsManager
     {
         public int MaxConcurrentDownloadCount { get; set; } = 2;
+
+        public string FileNameTemplate { get; set; } = FileNameGenerator.DefaultTemplate;
 
         public bool ShouldInjectTags { get; set; } = true;
 
