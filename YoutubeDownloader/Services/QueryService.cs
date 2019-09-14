@@ -104,7 +104,7 @@ namespace YoutubeDownloader.Services
             // Search
             if (query.Type == QueryType.Search)
             {
-                var videos = await _youtubeClient.SearchVideosAsync(query.Value, 5);
+                var videos = await _youtubeClient.SearchVideosAsync(query.Value, 2);
                 var title = $"Suche: {query.Value}";
 
                 return new ExecutedQuery(query, title, videos);
