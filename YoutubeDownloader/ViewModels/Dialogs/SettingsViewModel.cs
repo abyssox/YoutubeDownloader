@@ -13,6 +13,11 @@ namespace YoutubeDownloader.ViewModels.Dialogs
             get => _settingsService.MaxConcurrentDownloadCount;
             set => _settingsService.MaxConcurrentDownloadCount = value.Clamp(1, 10);
         }
+        public bool ShouldInjectTags
+        {
+            get => _settingsService.ShouldInjectTags;
+            set => _settingsService.ShouldInjectTags = value;
+        }
 
         public string DefaultDownloadDirectory
         {

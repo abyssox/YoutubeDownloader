@@ -33,6 +33,18 @@
                 TickFrequency="1"
                 Value="{Binding MaxConcurrentDownloads}" />
         </StackPanel>
+        
+        <!--  Tag injection  -->
+        <DockPanel LastChildFill="False">
+            <TextBlock
+                Margin="16,8"
+                DockPanel.Dock="Left"
+                Text="Media Informationen automatisch hinzufügen:" />
+            <ToggleButton
+                Margin="16,8"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding ShouldInjectTags}" />
+        </DockPanel>
 
       <!--  Default download directory  -->
       <StackPanel>
