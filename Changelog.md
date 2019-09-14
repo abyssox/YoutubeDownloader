@@ -1,3 +1,7 @@
+### v1.6.0.1 (14-Sep-2019)
+
+- Set "Title" as default download filename
+
 ### v1.6 (14-Sep-2019)
 
 - Added support for processing multiple queries in one go. Separate multiple URLs/IDs/searches with new lines (Shift+Enter) to specify multiple queries.
