@@ -3,7 +3,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using ATL;
 using Newtonsoft.Json.Linq;
 using Tyrrrz.Extensions;
 using YoutubeExplode.Models;
@@ -88,7 +87,7 @@ namespace YoutubeDownloader.Services
             videoTitle = videoTitle.Replace("(animated video)", "", StringComparison.OrdinalIgnoreCase);
 
             // Split by common artist/title separator characters
-            var split = videoTitle.Split('-', '~', '—', '–');
+            var split = videoTitle.Split(" - ", " ~ ", " — ", " – ");
 
             // Extract artist and title
             if (split.Length >= 2)
@@ -123,7 +122,7 @@ namespace YoutubeDownloader.Services
 
             // Try to get tags
             var tagsJson = await TryGetTagsJsonAsync(artist, title, cancellationToken);
-            if (tagsJson == null || tagsJson["score"].Value<int>() < 50)
+            if (tagsJson == null)
                 return;
 
             // Extract information
@@ -132,13 +131,11 @@ namespace YoutubeDownloader.Services
             var resolvedAlbumName = tagsJson["releases"]?.FirstOrDefault()?["title"]?.Value<string>();
 
             // Inject tags
-            new Track(filePath)
-            {
-                Artist = resolvedArtist ?? artist ?? "",
-                Title = resolvedTitle ?? title ?? "",
-                Album = resolvedAlbumName ?? "",
-                DurationMs = video.Duration.TotalMilliseconds
-            }.Save();
+            var taggedFile = TagLib.File.Create(filePath);
+            taggedFile.Tag.Performers = new[] { resolvedArtist ?? artist ?? "" };
+            taggedFile.Tag.Title = resolvedTitle ?? title ?? "";
+            taggedFile.Tag.Album = resolvedAlbumName ?? "";
+            taggedFile.Save();
         }
     }
 }
