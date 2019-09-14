@@ -238,6 +238,7 @@ namespace YoutubeDownloader.ViewModels
         {
             var failedDownloads = Downloads.Where(d => d.IsFailed).ToArray();
             foreach (var download in failedDownloads)
+                download.Restart();
         }
     }
 }
