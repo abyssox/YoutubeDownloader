@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Gress;
 using MaterialDesignThemes.Wpf;
 using Stylet;
@@ -56,6 +57,35 @@ namespace YoutubeDownloader.ViewModels
                 (sender, args) => IsProgressIndeterminate = ProgressManager.IsActive && ProgressManager.Progress.IsEither(0, 1));
         }
 
+        private async Task HandleAutoUpdateAsync()
+        {
+            try
+            {
+                // Check for updates
+                var updateVersion = await _updateService.CheckForUpdatesAsync();
+                if (updateVersion == null)
+                    return;
+
+                // Notify user of an update and prepare it
+                Notifications.Enqueue($"Update YoutubeDownloader v{updateVersion} wird heruntergeladen...");
+                await _updateService.PrepareUpdateAsync(updateVersion);
+
+                // Prompt user to install update (otherwise install it when application exits)
+                Notifications.Enqueue(
+                    "Das Update wird beim beenden des Programms installiert.",
+                    "JETZT INSTALLIEREN", () =>
+                    {
+                        _updateService.FinalizeUpdate(true);
+                        RequestClose();
+                    });
+            }
+            catch
+            {
+                // Failure to update shouldn't crash the application
+                Notifications.Enqueue("Update fehlgeschlagen");
+            }
+        }
+
         protected override async void OnViewLoaded()
         {
             base.OnViewLoaded();
@@ -63,26 +93,7 @@ namespace YoutubeDownloader.ViewModels
             // Load settings
             _settingsService.Load();
 
-            // Check and prepare update
-            try
-            {
-                var updateVersion = await _updateService.CheckPrepareUpdateAsync();
-                if (updateVersion != null)
-                {
-                    // Show notification
-                    Notifications.Enqueue(
-                        $"Update auf YoutubeDownloader v{updateVersion} wird beim beenden des Programms installiert.",
-                        "JETZT INSTALLIEREN", () =>
-                        {
-                            _updateService.FinalizeUpdate(true);
-                            RequestClose();
-                        });
-                }
-            }
-            catch
-            {
-                Notifications.Enqueue("Das automatische Update konnte nicht installiert werden!");
-            }
+            await HandleAutoUpdateAsync();
         }
 
         protected override void OnClose()
