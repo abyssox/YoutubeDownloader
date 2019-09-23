@@ -1,6 +1,7 @@
 ### v1.6.1 (22-Sep-2019)
 
 - Fixed an issue where starting new downloads was not possible if there were already active downloads.
+- Updated ffmpeg to v4.2.1
 
 ### v1.6.0.1 (14-Sep-2019)
 
