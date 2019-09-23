@@ -1,6 +1,10 @@
+### v1.6.1 (22-Sep-2019)
+
+- Fixed an issue where starting new downloads was not possible if there were already active downloads.
+
 ### v1.6.0.1 (14-Sep-2019)
 
-- Set "Title" as default download filename
+- Set "Title" as default download filename.
 
 ### v1.6 (14-Sep-2019)
 
