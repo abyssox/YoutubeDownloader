@@ -50,7 +50,6 @@ namespace YoutubeDownloader.ViewModels
             DisplayName = $"YoutubeDownloader v{version}";
 
             // Update busy state when progress manager changes
-            ProgressManager.Bind(o => o.IsActive, (sender, args) => IsBusy = ProgressManager.IsActive);
             ProgressManager.Bind(o => o.IsActive,
                 (sender, args) => IsProgressIndeterminate = ProgressManager.IsActive && ProgressManager.Progress.IsEither(0, 1));
             ProgressManager.Bind(o => o.Progress,
@@ -146,7 +145,11 @@ namespace YoutubeDownloader.ViewModels
 
         public async void ProcessQuery()
         {
-            var operation = ProgressManager.CreateOperation();
+            // Small operation weight to not offset any existing download operations
+            var operation = ProgressManager.CreateOperation(0.01);
+
+            // Lock this method for re-entry
+            IsBusy = true;
 
             try
             {
@@ -228,6 +231,9 @@ namespace YoutubeDownloader.ViewModels
             {
                 // Dispose progress operation
                 operation.Dispose();
+
+                // Unlock this method
+                IsBusy = false;
             }
         }
 
