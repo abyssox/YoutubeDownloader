@@ -1,8 +1,10 @@
 # YoutubeDownloader
 
-[![Build](https://img.shields.io/appveyor/ci/calis2002/YoutubeDownloader/master.svg)](https://ci.appveyor.com/project/calis2002/YoutubeDownloader)
-[![Release](https://img.shields.io/github/release/calis2002/YoutubeDownloader.svg)](https://github.com/calis2002/YoutubeDownloader/releases)
-[![Downloads](https://img.shields.io/github/downloads/calis2002/YoutubeDownloader/total.svg)](https://github.com/calis2002/YoutubeDownloader/releases)
+thankfully forked from https://github.com/Tyrrrz/YoutubeDownloader
+
+[![Build](https://img.shields.io/appveyor/ci/abyssox/YoutubeDownloader/master.svg)](https://ci.appveyor.com/project/abyssox/YoutubeDownloader)
+[![Release](https://img.shields.io/github/release/abyssox/YoutubeDownloader.svg)](https://github.com/abyssox/YoutubeDownloader/releases)
+[![Downloads](https://img.shields.io/github/downloads/abyssox/YoutubeDownloader/total.svg)](https://github.com/abyssox/YoutubeDownloader/releases)
 [![Donate](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/tyrrrz)
 [![Donate](https://img.shields.io/badge/buymeacoffee-donate-yellow.svg)](https://buymeacoffee.com/tyrrrz)
 
@@ -10,8 +12,8 @@ YoutubeDownloader is an application that lets you download videos from YouTube. 
 
 ## Download
 
-- [Stable releases](https://github.com/calis2002/YoutubeDownloader/releases)
-- [Continuous integration](https://ci.appveyor.com/project/calis2002/YoutubeDownloader)
+- [Stable releases](https://github.com/abyssox/YoutubeDownloader/releases)
+- [Continuous integration](https://ci.appveyor.com/project/abyssox/YoutubeDownloader)
 
 ## Features
 
@@ -23,9 +25,9 @@ YoutubeDownloader is an application that lets you download videos from YouTube. 
 
 ## Screenshots
 
-![](http://www.tyrrrz.me/Projects/YoutubeDownloader/Images/1.png)
-![](http://www.tyrrrz.me/Projects/YoutubeDownloader/Images/2.png)
-![](http://www.tyrrrz.me/Projects/YoutubeDownloader/Images/3.png)
+![](https://raw.githubusercontent.com/Tyrrrz/YoutubeDownloader/master/.screenshots/list.png)
+![](https://raw.githubusercontent.com/Tyrrrz/YoutubeDownloader/master/.screenshots/single.png)
+![](https://raw.githubusercontent.com/Tyrrrz/YoutubeDownloader/master/.screenshots/multiple.png)
 
 ## Libraries used
 

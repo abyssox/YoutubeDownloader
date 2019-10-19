@@ -9,7 +9,7 @@ namespace YoutubeDownloader.Services
     public class UpdateService
     {
         private readonly IUpdateManager _updateManager = new UpdateManager(
-            new GithubPackageResolver("calis2002", "YoutubeDownloader", "YoutubeDownloader.zip"),
+            new GithubPackageResolver("abyssox", "YoutubeDownloader", "YoutubeDownloader.zip"),
             new ZipPackageExtractor());
 
         private Version _updateVersion;
