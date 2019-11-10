@@ -20,9 +20,12 @@ jobs:
 
     - name: Build & publish
       run: dotnet publish YoutubeDownloader/ -o YoutubeDownloader/bin/Publish --configuration Release
+
     - name: Pack
       run: Compress-Archive -Path YoutubeDownloader/bin/Publish/* -DestinationPath YoutubeDownloader/bin/Publish/Archive.zip -Force
       shell: pwsh
+	  env:
+	    DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
     - name: Create release
       id: create_release
