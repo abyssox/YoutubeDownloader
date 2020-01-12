@@ -15,6 +15,7 @@ This application uses the [YoutubeExplode](https://github.com/Tyrrrz/YoutubeExpl
 
 - **[Latest release](https://github.com/abyssox/YoutubeDownloader/releases/latest)**
 - [CI build](https://github.com/abyssox/YoutubeDownloader/actions)
+
 Note: This application requires .NET Core runtime for desktop apps, which you can [download here](https://dotnet.microsoft.com/download/dotnet-core/current/runtime).
 
 ## Features
