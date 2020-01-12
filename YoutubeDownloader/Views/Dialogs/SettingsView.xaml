@@ -67,11 +67,11 @@
         <DockPanel
             Background="Transparent"
             LastChildFill="False"
-            ToolTip="Media tags can be automatically inferred from video title and injected into output file">
+            ToolTip="Media Tags können automatisch vom Videotitel abgeleitet und in die Ausgabedatei eingefügt werden">
             <TextBlock
                 Margin="16,8"
                 DockPanel.Dock="Left"
-                Text="Automatically inject media tags" />
+                Text="Media Tags automatisch hinzufügen" />
             <ToggleButton
                 Margin="16,8"
                 DockPanel.Dock="Right"
@@ -82,11 +82,11 @@
         <DockPanel
             Background="Transparent"
             LastChildFill="False"
-            ToolTip="When selecting multiple videos to download, skip those that already have a matching file in the directory">
+            ToolTip="Wenn Sie mehrere Videos zum Herunterladen auswählen werden diejenigen übersprungen, für die bereits eine passende Datei im Downloadverzeichnis existiert.">
             <TextBlock
                 Margin="16,8"
                 DockPanel.Dock="Left"
-                Text="Skip downloads for files that already exist" />
+                Text="Downloads für bereits existierende Dateien überspringen" />
             <ToggleButton
                 Margin="16,8"
                 DockPanel.Dock="Right"
