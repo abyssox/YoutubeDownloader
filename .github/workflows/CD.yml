@@ -20,6 +20,8 @@ jobs:
 
     - name: Build & publish
       run: dotnet publish YoutubeDownloader/ -o YoutubeDownloader/bin/Publish --configuration Release
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
     - name: Pack
       run: Compress-Archive -Path YoutubeDownloader/bin/Publish/* -DestinationPath YoutubeDownloader/bin/Publish/Archive.zip -Force
