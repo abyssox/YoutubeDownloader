@@ -8,6 +8,7 @@ namespace YoutubeDownloader.Views
         {
             InitializeComponent();
         }
+
         private void QueryTextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
             // Disable new lines when pressing enter without shift

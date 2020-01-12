@@ -86,7 +86,7 @@ namespace YoutubeDownloader.Services
             {
                 var channel = await _youtubeClient.GetChannelAsync(query.Value);
                 var videos = await _youtubeClient.GetChannelUploadsAsync(query.Value);
-                var title = $"Kabal uploads: {channel.Title}";
+                var title = $"Kanal uploads: {channel.Title}";
 
                 return new ExecutedQuery(query, title, videos);
             }
@@ -112,7 +112,5 @@ namespace YoutubeDownloader.Services
 
             throw new ArgumentException($"Suchanfrage konnte nicht verarbeitet werden: [{query}].", nameof(query));
         }
-
-        public Task<ExecutedQuery> ExecuteQueryAsync(string query) => ExecuteQueryAsync(ParseQuery(query));
     }
 }

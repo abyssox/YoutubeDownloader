@@ -6,16 +6,16 @@ using Onova.Services;
 
 namespace YoutubeDownloader.Services
 {
-    public class UpdateService
+    public class UpdateService : IDisposable
     {
         private readonly IUpdateManager _updateManager = new UpdateManager(
             new GithubPackageResolver("abyssox", "YoutubeDownloader", "YoutubeDownloader.zip"),
             new ZipPackageExtractor());
 
-        private Version _updateVersion;
+        private Version? _updateVersion;
         private bool _updaterLaunched;
 
-        public async Task<Version> CheckForUpdatesAsync()
+        public async Task<Version?> CheckForUpdatesAsync()
         {
             var check = await _updateManager.CheckForUpdatesAsync();
             return check.CanUpdate ? check.LastVersion : null;

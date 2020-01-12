@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Gress;
 using MaterialDesignThemes.Wpf;
@@ -30,7 +29,7 @@ namespace YoutubeDownloader.ViewModels
 
         public bool IsProgressIndeterminate { get; private set; }
 
-        public string Query { get; set; }
+        public string? Query { get; set; }
 
         public BindableCollection<DownloadViewModel> Downloads { get; } = new BindableCollection<DownloadViewModel>();
 
@@ -46,8 +45,7 @@ namespace YoutubeDownloader.ViewModels
             _downloadService = downloadService;
 
             // Title
-            var version = Assembly.GetExecutingAssembly().GetName().Version.ToString(4);
-            DisplayName = $"YoutubeDownloader v{version}";
+            DisplayName = $"{App.Name} v{App.VersionString}";
 
             // Update busy state when progress manager changes
             ProgressManager.Bind(o => o.IsActive,
@@ -66,13 +64,13 @@ namespace YoutubeDownloader.ViewModels
                     return;
 
                 // Notify user of an update and prepare it
-                Notifications.Enqueue($"Update YoutubeDownloader v{updateVersion} wird heruntergeladen...");
+                Notifications.Enqueue($"Update v{updateVersion} wird heruntergeladen...");
                 await _updateService.PrepareUpdateAsync(updateVersion);
 
                 // Prompt user to install update (otherwise install it when application exits)
                 Notifications.Enqueue(
-                    "Das Update wird beim beenden des Programms installiert.",
-                    "JETZT INSTALLIEREN", () =>
+                    "Das Update wurde heruntergeladen und wird beim Beenden installiert",
+                    "JETZT INSTALLIERN", () =>
                     {
                         _updateService.FinalizeUpdate(true);
                         RequestClose();
@@ -92,6 +90,7 @@ namespace YoutubeDownloader.ViewModels
             // Load settings
             _settingsService.Load();
 
+            // Check and prepare update
             await HandleAutoUpdateAsync();
         }
 
@@ -141,7 +140,7 @@ namespace YoutubeDownloader.ViewModels
             download.Start();
         }
 
-        public bool CanProcessQuery => !IsBusy && !Query.IsNullOrWhiteSpace();
+        public bool CanProcessQuery => !IsBusy && !string.IsNullOrWhiteSpace(Query);
 
         public async void ProcessQuery()
         {
@@ -154,21 +153,21 @@ namespace YoutubeDownloader.ViewModels
             try
             {
                 // Split query into separate lines and parse them
-                var parsedQueries = _queryService.ParseMultilineQuery(Query);
+                var parsedQueries = _queryService.ParseMultilineQuery(Query!);
 
                 // Execute separate queries
                 var executedQueries = await _queryService.ExecuteQueriesAsync(parsedQueries, operation);
 
                 // Extract videos and other details
                 var videos = executedQueries.SelectMany(q => q.Videos).Distinct(v => v.Id).ToArray();
-                var dialogTitle = executedQueries.Count == 1 ? executedQueries.Single().Title : "Multiple queries";
+                var dialogTitle = executedQueries.Count == 1 ? executedQueries.Single().Title : "Mehrere Abfragen";
 
                 // If no videos were found - tell the user
                 if (videos.Length <= 0)
                 {
                     // Create dialog
                     var dialog = _viewModelFactory.CreateMessageBoxViewModel("Nichts gefunden",
-                        "Es wurde kein Video gefunden das zu Ihrer Suchanfrage oder URL passt!");
+                        "Es wurden keine Videos gefunden, die zu Ihrer Suchanfrage oder URL passen.");
 
                     // Show dialog
                     await _dialogManager.ShowDialogAsync(dialog);

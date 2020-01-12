@@ -16,7 +16,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.100
+        dotnet-version: 3.1.100
 
     - name: Build & publish
       run: dotnet publish YoutubeDownloader/ -o YoutubeDownloader/bin/Publish --configuration Release
@@ -24,17 +24,17 @@ jobs:
     - name: Pack
       run: Compress-Archive -Path YoutubeDownloader/bin/Publish/* -DestinationPath YoutubeDownloader/bin/Publish/Archive.zip -Force
       shell: pwsh
-      env:
-        DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
     - name: Create release
       id: create_release
-      uses: actions/create-release@v1.0.0
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
         release_name: ${{ github.ref }}
+        body: |
+          [Changelog](https://github.com/abyssox/YoutubeDownloader/blob/master/Changelog.md)
         draft: false
         prerelease: false
 

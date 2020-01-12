@@ -1,5 +1,4 @@
-﻿using Tyrrrz.Extensions;
-using YoutubeExplode.Models;
+﻿using YoutubeExplode.Models;
 
 namespace YoutubeDownloader.Internal
 {
@@ -15,16 +14,16 @@ namespace YoutubeDownloader.Internal
 
         public static string DefaultTemplate { get; } = $"{TitleToken}";
 
-        public static string GenerateFileName(string template, Video video, string format, string number = null)
+        public static string GenerateFileName(string template, Video video, string format, string? number = null)
         {
             var result = template;
 
-            if (!number.IsNullOrWhiteSpace())
-                result = result.Replace(NumberToken, $"[{number}]");
-
+            result = result.Replace(NumberToken, !string.IsNullOrWhiteSpace(number) ? $"[{number}]" : "");
             result = result.Replace(TitleToken, video.Title);
             result = result.Replace(AuthorToken, video.Author);
             result = result.Replace(UploadDateToken, video.UploadDate.ToString("yyyy-MM-dd"));
+
+            result = result.Trim();
 
             result += $".{format}";
 

@@ -115,7 +115,6 @@ namespace YoutubeDownloader.Services
                     result.Add(new DownloadOption("ogg", audioStreamInfo));
                 }
             }
-
             // Fallback to muxed streams
             else if (mediaStreamInfoSet.Muxed.Any())
             {

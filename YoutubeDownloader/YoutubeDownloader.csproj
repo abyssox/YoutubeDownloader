@@ -1,45 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  
+  <Import Project="../YoutubeDownloader.props" />
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <Version>1.6.1</Version>
-    <Company>Tyrrrz</Company>
-    <Copyright>Copyright (c) Alexey Golub</Copyright>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>../favicon.ico</ApplicationIcon>
   </PropertyGroup>
- 
+
   <ItemGroup>
     <Resource Include="../favicon.ico" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Gress" Version="1.1.1" />
-    <PackageReference Include="MaterialDesignColors" Version="1.2.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="2.6.0" />
+    <PackageReference Include="MaterialDesignColors" Version="1.2.2" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.0.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Onova" Version="2.5.1" />
+    <PackageReference Include="Onova" Version="2.5.2" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="1.1.0" />
-    <PackageReference Include="PropertyChanged.Fody" Version="3.1.3" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.3" />
     <PackageReference Include="Stylet" Version="1.3.0" />
     <PackageReference Include="taglib" Version="2.1.0" />
-    <PackageReference Include="Tyrrrz.Extensions" Version="1.6.4" />
+    <PackageReference Include="Tyrrrz.Extensions" Version="1.6.5" />
     <PackageReference Include="Tyrrrz.Settings" Version="1.3.4" />
-    <PackageReference Include="YoutubeExplode" Version="4.7.10" />
+    <PackageReference Include="YoutubeExplode" Version="4.7.12" />
     <PackageReference Include="YoutubeExplode.Converter" Version="1.4.3" />
   </ItemGroup>
 
   <!-- This downloads FFmpeg and copies it to output directory-->
   <Target Name="Download FFmpeg before build" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)DownloadFfmpeg.ps1&quot;" />
-    <Copy SourceFiles="$(ProjectDir)ffmpeg.exe" DestinationFiles="$(OutDir)ffmpeg.exe" />
+    <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)/DownloadFfmpeg.ps1&quot;" />
+    <Copy SourceFiles="$(ProjectDir)/ffmpeg.exe" DestinationFiles="$(OutDir)/ffmpeg.exe" />
   </Target>
 
   <Target Name="Download FFmpeg before publish" BeforeTargets="PrepareForPublish">
-    <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)DownloadFfmpeg.ps1&quot;" />
-    <Copy SourceFiles="$(ProjectDir)ffmpeg.exe" DestinationFiles="$(PublishDir)ffmpeg.exe" />
+    <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)/DownloadFfmpeg.ps1&quot;" />
+    <Copy SourceFiles="$(ProjectDir)/ffmpeg.exe" DestinationFiles="$(PublishDir)/ffmpeg.exe" />
   </Target>
-  
+
 </Project>

@@ -55,7 +55,7 @@
                             Grid.Column="0"
                             AcceptsReturn="True"
                             Margin="6"
-                            materialDesign:HintAssist.Hint="Suche... (Shift+Enter für mehrere)"
+                            materialDesign:HintAssist.Hint="Adresse oder Suchbegriff (Shift+Enter für mehrere)"
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                             BorderThickness="0"
                             FontSize="16"
@@ -72,7 +72,7 @@
                             Command="{s:Action ProcessQuery}"
                             IsDefault="True"
                             Style="{DynamicResource MaterialDesignFlatButton}"
-                            ToolTip="Suchen (Enter)">
+                            ToolTip="Suchabfrage starten (Enter)">
                             <materialDesign:PackIcon
                                 Width="24"
                                 Height="24"
@@ -86,9 +86,9 @@
                     Grid.Column="1"
                     Margin="6"
                     Padding="4"
-                    ToolTip="Einstellungen"
                     Command="{s:Action ShowSettings}"
-                    Style="{DynamicResource MaterialDesignFlatDarkButton}">
+                    Style="{DynamicResource MaterialDesignFlatDarkButton}"
+                    ToolTip="Einstellungen">
                     <materialDesign:PackIcon
                         Width="24"
                         Height="24"
@@ -134,12 +134,11 @@
                                             CommandParameter="{Binding}"
                                             Header="Download entfernen" />
                                         <MenuItem Command="{s:Action RemoveInactiveDownloads}"
-                                                  Header="Fertige Downloads entfernen" />
+                                                  Header="Inaktive Downloads entfernen" />
                                         <MenuItem Command="{s:Action RemoveSuccessfulDownloads}"
-                                                  Header="Nur erfolgreiche Downloads entfernen" />
+                                                  Header="Abgeschlossene Downloads entfernen" />
                                         <MenuItem Command="{s:Action RestartFailedDownloads}"
                                                   Header="Fehlgeschlagene Downloads neu starten" />
-
                                     </ContextMenu>
                                 </Setter.Value>
                             </Setter>
@@ -198,8 +197,8 @@
                                 <DataTemplate DataType="{x:Type components:DownloadViewModel}">
                                     <TextBlock VerticalAlignment="Center" TextTrimming="CharacterEllipsis">
                                         <TextBlock.Style>
-                                          <Style BasedOn="{StaticResource {x:Type TextBlock}}"
-                                                 TargetType="{x:Type TextBlock}">
+                                            <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+                                                   TargetType="{x:Type TextBlock}">
                                                 <Style.Triggers>
                                                     <!--  Downloading  -->
                                                     <DataTrigger Binding="{Binding IsActive}" Value="True">
@@ -211,10 +210,10 @@
                                                     <MultiDataTrigger>
                                                         <MultiDataTrigger.Conditions>
                                                             <Condition Binding="{Binding IsActive}" Value="True" />
-                                                            <Condition Binding="{Binding ProgressOperation.Progress}" 
+                                                            <Condition Binding="{Binding ProgressOperation.Progress}"
                                                                        Value="0" />
                                                         </MultiDataTrigger.Conditions>
-                                                        <Setter Property="Foreground" 
+                                                        <Setter Property="Foreground"
                                                                 Value="{DynamicResource DimTextBrush}" />
                                                         <Setter Property="Text" Value="Warte..." />
                                                     </MultiDataTrigger>
@@ -302,7 +301,7 @@
                                             VerticalAlignment="Center"
                                             Command="{s:Action OpenFile}"
                                             Style="{DynamicResource MaterialDesignFlatButton}"
-                                            ToolTip="Datei öffnen"
+                                            ToolTip="Abspielen"
                                             Visibility="{Binding CanOpenFile, Converter={x:Static s:BoolToVisibilityConverter.Instance}}">
                                             <materialDesign:PackIcon
                                                 Width="24"

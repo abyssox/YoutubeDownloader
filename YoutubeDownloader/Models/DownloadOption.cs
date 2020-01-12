@@ -29,7 +29,7 @@ namespace YoutubeDownloader.Models
         }
 
         public DownloadOption(string format, MuxedStreamInfo muxedStreamInfo)
-            : this(format, muxedStreamInfo.VideoQualityLabel, new[] { muxedStreamInfo })
+            : this(format, muxedStreamInfo.VideoQualityLabel, new[] {muxedStreamInfo})
         {
         }
 

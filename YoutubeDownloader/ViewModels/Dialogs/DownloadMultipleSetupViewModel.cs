@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Windows;
-using Tyrrrz.Extensions;
 using YoutubeDownloader.Internal;
 using YoutubeDownloader.Services;
 using YoutubeDownloader.ViewModels.Components;
@@ -16,6 +15,8 @@ namespace YoutubeDownloader.ViewModels.Dialogs
         private readonly IViewModelFactory _viewModelFactory;
         private readonly SettingsService _settingsService;
         private readonly DialogManager _dialogManager;
+
+        public string Title { get; set; }
 
         public IReadOnlyList<Video> AvailableVideos { get; set; }
 
@@ -33,29 +34,27 @@ namespace YoutubeDownloader.ViewModels.Dialogs
             _dialogManager = dialogManager;
         }
 
-        protected override void OnViewLoaded()
+        public void OnViewLoaded()
         {
-            base.OnViewLoaded();
-
             // Select last used format
-            SelectedFormat = AvailableFormats.Contains(_settingsService.LastFormat)
+            SelectedFormat = !string.IsNullOrWhiteSpace(_settingsService.LastFormat) && AvailableFormats.Contains(_settingsService.LastFormat)
                 ? _settingsService.LastFormat
                 : AvailableFormats.FirstOrDefault();
         }
 
-        public bool CanConfirm => !SelectedVideos.IsNullOrEmpty();
+        public bool CanConfirm => SelectedVideos != null && SelectedVideos.Any();
 
         public void Confirm()
         {
             var dirPath = "";
 
             // Check if Default Download Directory is set in settings, otherwise prompt user for output directory path
-            if (_settingsService.DefaultDownloadDirectory.IsNullOrEmpty())
+            if (string.IsNullOrWhiteSpace(_settingsService.DefaultDownloadDirectory))
             { 
                 dirPath = _dialogManager.PromptDirectoryPath();
 
                 // If canceled - return
-                if (dirPath.IsNullOrWhiteSpace())
+                if (string.IsNullOrWhiteSpace(dirPath))
                     return;
             } else
             {
@@ -79,8 +78,14 @@ namespace YoutubeDownloader.ViewModels.Dialogs
                 var fileName = FileNameGenerator.GenerateFileName(_settingsService.FileNameTemplate, video, SelectedFormat, number);
                 var filePath = Path.Combine(dirPath, fileName);
 
-                // Ensure file paths are unique because user will not be able to confirm overwrites
-                filePath = FileEx.MakeUniqueFilePath(filePath);
+                // If file exists - either skip it or generate a unique file path, depending on user settings
+                if (File.Exists(filePath))
+                {
+                    if (_settingsService.ShouldSkipExistingFiles && new FileInfo(filePath).Length > 0)
+                        continue;
+
+                    filePath = FileEx.MakeUniqueFilePath(filePath);
+                }
 
                 // Create empty file to "lock in" the file path
                 FileEx.CreateDirectoriesForFile(filePath);
@@ -97,6 +102,6 @@ namespace YoutubeDownloader.ViewModels.Dialogs
             Close(downloads);
         }
 
-        public void CopyTitle() => Clipboard.SetText(DisplayName);
+        public void CopyTitle() => Clipboard.SetText(Title);
     }
 }
