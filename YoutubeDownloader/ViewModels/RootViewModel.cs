@@ -69,8 +69,8 @@ namespace YoutubeDownloader.ViewModels
 
                 // Prompt user to install update (otherwise install it when application exits)
                 Notifications.Enqueue(
-                    "Das Update wurde heruntergeladen und wird beim Beenden installiert",
-                    "JETZT INSTALLIERN", () =>
+                    "Das Update wurde heruntergeladen und wird beim beenden installiert",
+                    "JETZT INSTALLIEREN", () =>
                     {
                         _updateService.FinalizeUpdate(true);
                         RequestClose();
