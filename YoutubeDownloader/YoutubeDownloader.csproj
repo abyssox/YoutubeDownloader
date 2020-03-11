@@ -5,6 +5,7 @@
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>../favicon.ico</ApplicationIcon>
+    <Version>1.7.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
