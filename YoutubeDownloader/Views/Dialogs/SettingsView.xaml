@@ -92,20 +92,24 @@
                 DockPanel.Dock="Right"
                 IsChecked="{Binding ShouldSkipExistingFiles}" />
         </DockPanel>
-        
+
         <!--  Default download directory  -->
         <StackPanel>
-            <TextBlock Text="Standard Download Verzeichnis: " Margin="16,8" />
-            <TextBox Margin="16,8" IsReadOnly="True" Text="{Binding DefaultDownloadDirectory}" />
-            <Button x:Name = "btBrowse"
-            Content = "AUSWÄHLEN"
-            Click = "OnClickBrowse"
-            ClickMode = "Press"
-            Margin = "10"
-            Width = "150"
-            HorizontalAlignment = "Center"/>
+            <TextBlock Margin="16,8" Text="Standard Download Verzeichnis: " />
+            <TextBox
+                Margin="16,8"
+                IsReadOnly="True"
+                Text="{Binding DefaultDownloadDirectory}" />
+            <Button
+                x:Name="btBrowse"
+                Width="150"
+                Margin="10"
+                HorizontalAlignment="Center"
+                Click="OnClickBrowse"
+                ClickMode="Press"
+                Content="AUSWÄHLEN" />
         </StackPanel>
-        
+
         <!--  Save button  -->
         <Button
             Margin="8"

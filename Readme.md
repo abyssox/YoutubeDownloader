@@ -1,6 +1,7 @@
 # YoutubeDownloader
 
 thankfully forked from https://github.com/Tyrrrz/YoutubeDownloader
+This version has the ability to additionally set a default download directory in settings
 
 [![Build](https://github.com/abyssox/YoutubeDownloader/workflows/CI/badge.svg?branch=master)](https://github.com/abyssox/YoutubeDownloader/actions)
 [![Release](https://img.shields.io/github/release/abyssox/YoutubeDownloader.svg)](https://github.com/abyssox/YoutubeDownloader/releases)
@@ -25,6 +26,7 @@ Note: This application requires .NET Core runtime for desktop apps, which you ca
 - Selectable video quality
 - Multiple downloads in parallel with progress reporting and cancellation
 - Automatic media tagging for audio downloads
+- Set default download directory
 
 ## Screenshots
 

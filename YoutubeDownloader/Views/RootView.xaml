@@ -100,9 +100,11 @@
             <!--  Progress  -->
             <ProgressBar
                 Grid.Row="1"
+                Height="5"
                 Background="Transparent"
+                Foreground="#FF25F985"
                 IsIndeterminate="{Binding IsProgressIndeterminate}"
-                Value="{Binding ProgressManager.Progress, Mode=OneWay}" Height="5" Foreground="#FF25F985" />
+                Value="{Binding ProgressManager.Progress, Mode=OneWay}" />
 
             <!--  Content  -->
             <Grid Grid.Row="2">
