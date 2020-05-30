@@ -63,6 +63,26 @@
             </TextBox.ToolTip>
         </TextBox>
 
+        <!--  Auto-updates  -->
+        <DockPanel Background="Transparent" LastChildFill="False">
+            <DockPanel.ToolTip>
+                <TextBlock>
+                    <Run Text="Automatische Updates bei jedem Start durchführen" />
+                    <LineBreak />
+                    <Run FontWeight="SemiBold" Text="Warnung:" />
+                    <Run Text="Deaktivierung wird NICHT empfohlen, da die Anwendung nicht mehr funktioniert wenn Youtube Änderungen vornimmt." />
+                </TextBlock>
+            </DockPanel.ToolTip>
+            <TextBlock
+                Margin="16,8"
+                DockPanel.Dock="Left"
+                Text="automatisches Update" />
+            <ToggleButton
+                Margin="16,8"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding IsAutoUpdateEnabled}" />
+        </DockPanel>
+
         <!--  Tag injection  -->
         <DockPanel
             Background="Transparent"
