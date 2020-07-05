@@ -9,7 +9,7 @@
     xmlns:s="https://github.com/canton7/Stylet"
     MinWidth="300"
     d:DataContext="{d:DesignInstance Type=dialogs:SettingsViewModel}"
-    d:DesignHeight="450"
+    d:DesignHeight="470"
     d:DesignWidth="800"
     Style="{DynamicResource MaterialDesignRoot}"
     mc:Ignorable="d">
@@ -18,7 +18,7 @@
             Margin="16"
             FontSize="17"
             Foreground="{DynamicResource PrimaryTextBrush}"
-            Text="Einstellungend" />
+            Text="Einstellungen" />
 
         <!--  Max concurrent downloads  -->
         <StackPanel Background="Transparent" ToolTip="Wie viele Downloads können gleichzeitig aktiv sein">
@@ -134,6 +134,7 @@
         <Button
             Margin="8"
             HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
             Command="{s:Action Close}"
             Content="SPEICHERN"
             IsCancel="True"
