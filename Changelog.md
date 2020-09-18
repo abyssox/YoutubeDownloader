@@ -1,3 +1,8 @@
+### v1.7.13 (12-Sep-2020)
+
+- Fixed various YouTube-related issues. Updated to YoutubeExplode v5.1.5.
+- New downloads are now listed at top not bottom
+
 ### v1.7.12.1 (23-Aug-2020)
 
 - Fixed various YouTube-related issues. Updated to YoutubeExplode v5.1.4.
