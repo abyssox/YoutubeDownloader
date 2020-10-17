@@ -15,7 +15,9 @@ namespace YoutubeDownloader.Services
 
         public bool ShouldSkipExistingFiles { get; set; } = false;
 
-        public string LastFormat { get; set; } = "mp3";
+        public string? LastFormat { get; set; } = "mp3";
+
+        public string? LastSubtitleLanguageCode { get; set; }
 
         public string DefaultDownloadDirectory { get; set; }
 
