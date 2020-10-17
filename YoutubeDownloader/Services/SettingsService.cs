@@ -17,6 +17,7 @@ namespace YoutubeDownloader.Services
         public bool ShouldInjectTags { get; set; } = true;
 
         public bool ShouldSkipExistingFiles { get; set; } = false;
+        public bool IsDarkThemeEnabled { get; set; } = false;
 
         public string? LastFormat { get; set; } = "mp3";
 

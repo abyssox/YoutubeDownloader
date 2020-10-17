@@ -20,7 +20,7 @@
             Foreground="{DynamicResource PrimaryTextBrush}"
             Text="Einstellungen" />
 
-        <!--  Max concurrent downloads  -->
+        <!--  Default download directory  -->
         <StackPanel Background="Transparent">
             <TextBlock Margin="16,8" Text="Standard Download Verzeichnis:" />
             <TextBox
@@ -35,7 +35,7 @@
         <StackPanel Background="Transparent" ToolTip="Wie viele Downloads dürfen gleichzeitig aktiv sein">
             <TextBlock Margin="16,8">
                 <Run Text="Maximale Anzahl gleichzeitiger Downloads:" />
-                <Run Foreground="{DynamicResource PrimaryTextBrush}" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
+                <Run FontWeight="DemiBold" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
             </TextBlock>
             <Slider
                 Margin="16,8"
@@ -91,6 +91,7 @@
         </TextBox>
 
         <!--  Auto-updates  -->
+        <!--
         <DockPanel Background="Transparent" LastChildFill="False">
             <DockPanel.ToolTip>
                 <TextBlock>
@@ -109,8 +110,10 @@
                 DockPanel.Dock="Right"
                 IsChecked="{Binding IsAutoUpdateEnabled}" />
         </DockPanel>
+        -->
 
         <!--  Tag injection  -->
+        <!--
         <DockPanel
             Background="Transparent"
             LastChildFill="False"
@@ -124,6 +127,7 @@
                 DockPanel.Dock="Right"
                 IsChecked="{Binding ShouldInjectTags}" />
         </DockPanel>
+        -->
 
         <!--  Skip existing files  -->
         <DockPanel
@@ -139,6 +143,26 @@
                 DockPanel.Dock="Right"
                 IsChecked="{Binding ShouldSkipExistingFiles}" />
         </DockPanel>
+
+        <!--  Dark Theme  -->
+        <DockPanel
+            Background="Transparent"
+            LastChildFill="False"
+            ToolTip="Dunkles Farblayout aktivieren">
+            <TextBlock
+                Margin="16,8"
+                DockPanel.Dock="Left"
+                Text="Dunkles Farblayout" />
+            <ToggleButton
+                Margin="16,8"
+                Checked="DarkThemeToggle_Checked"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding IsDarkThemeEnabled}"
+                Unchecked="DarkThemeToggle_Unchecked" />
+        </DockPanel>
+
+
+
 
         <!--  Save button  -->
         <Button

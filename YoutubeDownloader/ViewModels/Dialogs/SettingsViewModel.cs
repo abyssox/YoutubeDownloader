@@ -48,6 +48,11 @@ namespace YoutubeDownloader.ViewModels.Dialogs
             get => _settingsService.DefaultDownloadDirectory;
             set => _settingsService.DefaultDownloadDirectory = value;
         }
+        public bool IsDarkThemeEnabled
+        {
+            get => _settingsService.IsDarkThemeEnabled;
+            set => _settingsService.IsDarkThemeEnabled = value;
+        }
 
         public SettingsViewModel(SettingsService settingsService)
         {
