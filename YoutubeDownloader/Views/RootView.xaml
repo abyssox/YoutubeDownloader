@@ -88,6 +88,7 @@
                     Margin="6"
                     Padding="4"
                     Command="{s:Action ShowSettings}"
+                    Cursor="Hand"
                     Style="{DynamicResource MaterialDesignFlatDarkButton}"
                     ToolTip="Einstellungen">
                     <materialDesign:PackIcon

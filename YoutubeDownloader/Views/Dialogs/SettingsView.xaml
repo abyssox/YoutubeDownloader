@@ -9,7 +9,7 @@
     xmlns:s="https://github.com/canton7/Stylet"
     MinWidth="300"
     d:DataContext="{d:DesignInstance Type=dialogs:SettingsViewModel}"
-    d:DesignHeight="470"
+    d:DesignHeight="530"
     d:DesignWidth="800"
     Style="{DynamicResource MaterialDesignRoot}"
     mc:Ignorable="d">
@@ -21,7 +21,18 @@
             Text="Einstellungen" />
 
         <!--  Max concurrent downloads  -->
-        <StackPanel Background="Transparent" ToolTip="Wie viele Downloads können gleichzeitig aktiv sein">
+        <StackPanel Background="Transparent">
+            <TextBlock Margin="16,8" Text="Standard Download Verzeichnis:" />
+            <TextBox
+                Margin="16,8"
+                IsReadOnly="True"
+                PreviewMouseLeftButtonDown="OnClickBrowse"
+                Text="{Binding DefaultDownloadDirectory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ToolTip="Hier klicken um ein anderes Verzeichnis auszuwählen" />
+        </StackPanel>
+
+        <!--  Max concurrent downloads  -->
+        <StackPanel Background="Transparent" ToolTip="Wie viele Downloads dürfen gleichzeitig aktiv sein">
             <TextBlock Margin="16,8">
                 <Run Text="Maximale Anzahl gleichzeitiger Downloads:" />
                 <Run Foreground="{DynamicResource PrimaryTextBrush}" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
@@ -38,27 +49,43 @@
         <!--  Default file name template  -->
         <TextBox
             Margin="16,8"
-            materialDesign:HintAssist.Hint="File name template"
+            materialDesign:HintAssist.Hint="Vorlage Dateinamen"
             materialDesign:HintAssist.IsFloating="True"
             Text="{Binding FileNameTemplate}">
             <TextBox.ToolTip>
                 <TextBlock>
-                    <Run Text="Template used for generating file names for downloaded videos" />
+                    <Run Text="Dateinamen Vorlage die für heruntergeladene Videos verwendet wird" />
                     <LineBreak />
                     <LineBreak />
-                    <Run Text="Available variables:" />
+                    <Run Text="Verfügbare Variablen:" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$num" />
-                    <Run Text="- video's position in the list (if applicable)" />
+                    <Run Text="- Position des Videos in der Liste (falls verfügbar)" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$title" />
-                    <Run Text="- video title" />
+                    <Run Text="- Titel" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$author" />
-                    <Run Text="- video author" />
+                    <Run Text="- Author" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$uploadDate" />
-                    <Run Text="- video upload date" />
+                    <Run Text="- Uploaddatum" />
+                </TextBlock>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <!--  Excluded container formats  -->
+        <TextBox
+            Margin="16,8"
+            materialDesign:HintAssist.Hint="Ausgeschlossene Container-Formate"
+            materialDesign:HintAssist.IsFloating="True"
+            Text="{Binding ExcludedContainerFormats}">
+            <TextBox.ToolTip>
+                <TextBlock>
+                    <Run Text="Kommagetrennte Liste von Containerformaten, die beim Herunterladen eines Videos aus der Formatliste ausgeschlossen werden" />
+                    <LineBreak />
+                    <LineBreak />
+                    <Run Text="Bsp: webm,ogg" />
                 </TextBlock>
             </TextBox.ToolTip>
         </TextBox>
@@ -67,16 +94,16 @@
         <DockPanel Background="Transparent" LastChildFill="False">
             <DockPanel.ToolTip>
                 <TextBlock>
-                    <Run Text="Automatische Updates bei jedem Start durchführen" />
+                    <Run Text="Bei jedem Start automatisch nach Updates suchen" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="Warnung:" />
-                    <Run Text="Deaktivierung wird NICHT empfohlen, da die Anwendung nicht mehr funktioniert wenn Youtube Änderungen vornimmt." />
+                    <Run Text="Deaktivierung wird NICHT empfohlen, da die Anwendung nicht mehr funktioniert wenn Youtube Änderungen vornimmt" />
                 </TextBlock>
             </DockPanel.ToolTip>
             <TextBlock
                 Margin="16,8"
                 DockPanel.Dock="Left"
-                Text="automatisches Update" />
+                Text="Automatische Updates" />
             <ToggleButton
                 Margin="16,8"
                 DockPanel.Dock="Right"
@@ -102,7 +129,7 @@
         <DockPanel
             Background="Transparent"
             LastChildFill="False"
-            ToolTip="Wenn Sie mehrere Videos zum Herunterladen auswählen werden diejenigen übersprungen, für die bereits eine passende Datei im Downloadverzeichnis existiert.">
+            ToolTip="Wenn Sie mehrere Videos zum Herunterladen auswählen werden diejenigen übersprungen, für die bereits eine passende Datei im Downloadverzeichnis existiert">
             <TextBlock
                 Margin="16,8"
                 DockPanel.Dock="Left"
@@ -113,28 +140,10 @@
                 IsChecked="{Binding ShouldSkipExistingFiles}" />
         </DockPanel>
 
-        <!--  Default download directory  -->
-        <StackPanel>
-            <TextBlock Margin="16,8" Text="Standard Download Verzeichnis: " />
-            <TextBox
-                Margin="16,8"
-                IsReadOnly="True"
-                Text="{Binding DefaultDownloadDirectory}" />
-            <Button
-                x:Name="btBrowse"
-                Width="150"
-                Margin="10"
-                HorizontalAlignment="Center"
-                Click="OnClickBrowse"
-                ClickMode="Press"
-                Content="AUSWÄHLEN" />
-        </StackPanel>
-
         <!--  Save button  -->
         <Button
             Margin="8"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
             Command="{s:Action Close}"
             Content="SPEICHERN"
             IsCancel="True"
