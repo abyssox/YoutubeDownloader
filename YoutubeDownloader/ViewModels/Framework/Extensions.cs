@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using YoutubeDownloader.Models;
+using YoutubeDownloader.Services;
 using YoutubeDownloader.ViewModels.Components;
 using YoutubeDownloader.ViewModels.Dialogs;
 using YoutubeExplode.Videos;
@@ -9,7 +10,7 @@ namespace YoutubeDownloader.ViewModels.Framework
     public static class Extensions
     {
         public static DownloadViewModel CreateDownloadViewModel(this IViewModelFactory factory, Video video,
-            string filePath, string format, DownloadOption? downloadOption = null, SubtitleOption? subtitleOption = null)
+            string filePath, string format, DownloadOption downloadOption, SubtitleOption subtitleOption)
         {
             var viewModel = factory.CreateDownloadViewModel();
             viewModel.Video = video;
@@ -17,6 +18,17 @@ namespace YoutubeDownloader.ViewModels.Framework
             viewModel.Format = format;
             viewModel.DownloadOption = downloadOption;
             viewModel.SubtitleOption = subtitleOption;
+
+            return viewModel;
+        }
+        public static DownloadViewModel CreateDownloadViewModel(this IViewModelFactory factory, Video video,
+            string filePath, string format, DownloadQuality quality)
+        {
+            var viewModel = factory.CreateDownloadViewModel();
+            viewModel.Video = video;
+            viewModel.FilePath = filePath;
+            viewModel.Format = format;
+            viewModel.Quality = quality;
 
             return viewModel;
         }
