@@ -28,7 +28,6 @@
             <SolidColorBrush x:Key="SuccessBrush" Color="{DynamicResource SuccessColor}" />
             <SolidColorBrush x:Key="CanceledBrush" Color="{DynamicResource CanceledColor}" />
             <SolidColorBrush x:Key="FailedBrush" Color="{DynamicResource FailedColor}" />
-
             <!--  Styles  -->
             <Style x:Key="MaterialDesignRoot" TargetType="{x:Type Control}">
                 <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}" />

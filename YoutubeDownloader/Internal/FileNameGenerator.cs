@@ -14,7 +14,11 @@ namespace YoutubeDownloader.Internal
 
         public static string DefaultTemplate { get; } = $"{TitleToken}";
 
-        public static string GenerateFileName(string template, Video video, string format, string? number = null)
+        public static string GenerateFileName(
+            string template,
+            Video video,
+            string format,
+            string? number = null)
         {
             var result = template;
 
@@ -27,7 +31,7 @@ namespace YoutubeDownloader.Internal
 
             result += $".{format}";
 
-            return FileEx.MakeSafeFileName(result);
+            return PathEx.EscapeFileName(result);
         }
     }
 }

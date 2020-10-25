@@ -1,15 +1,11 @@
 ### v1.7.14 (29-Sep-2020)
 
 - Fixed various YouTube-related issues. Updated to YoutubeExplode v5.1.6.
+- Changed the order in which new downloads appear in the list so that newest downloads are at the top. (Thanks [@Max](https://github.com/badijm))
 
 ### v1.7.13 (12-Sep-2020)
 
 - Fixed various YouTube-related issues. Updated to YoutubeExplode v5.1.5.
-- New downloads are now listed at top not bottom
-
-### v1.7.12.1 (23-Aug-2020)
-
-- Fixed various YouTube-related issues. Updated to YoutubeExplode v5.1.4.
 
 ### v1.7.12 (29-Jul-2020)
 
@@ -30,7 +26,6 @@
 ### v1.7.8 (10-May-2020)
 
 - Fixed various YouTube-related issues. Updated to YoutubeExplode v5.0.4.
-- Improve download option resolving
 
 ### v1.7.7 (07-May-2020)
 
@@ -73,21 +68,16 @@
 ### v1.6.1 (22-Sep-2019)
 
 - Fixed an issue where starting new downloads was not possible if there were already active downloads.
-- Updated ffmpeg to v4.2.1
-
-### v1.6.0.1 (14-Sep-2019)
-
-- Set "Title" as default download filename.
 
 ### v1.6 (14-Sep-2019)
 
 - Added support for processing multiple queries in one go. Separate multiple URLs/IDs/searches with new lines (Shift+Enter) to specify multiple queries.
 - Added file name template which is used when generating file names for downloaded videos. You can configure it in settings. Refer to the tooltip text for information on what each variable does.
 - Added automatic media tagging for downloaded videos (currently only audio files). Tags are resolved from MusicBrainz based on video title. This feature can be disabled in settings.
-- Added a context menu button to remove all successfully finished downloads. 
-- Added a context menu button to restart all failed downloads. 
+- Added a context menu button to remove all successfully finished downloads.
+- Added a context menu button to restart all failed downloads.
 - Added a context menu button to copy title in download setup dialog.
-- Starting a new download that overwrites an existing download will now remove the latter from the list. 
+- Starting a new download that overwrites an existing download will now remove the latter from the list.
 
 ### v1.5.7 (15-Aug-2019)
 
@@ -101,25 +91,13 @@
 
 - Fixed an issue where some videos failed to download.
 
-### v1.5.4.2 (10-Jul-2019)
+### v1.5.4 (10-Jul-2019)
 
 - Fixed an issue where an attempt to download any video resulted in an error. Updated to YoutubeExplode v4.7.6.
 
-### v1.5.4.1 (05-Jul-2019)
-
-- Updated ffmpeg to v4.1.3 and change build source to https://ffmpeg.zeranoe.com/builds/win64/static
-
-### v1.5.4 (04-Jul-2019)
+### v1.5.3 (04-Jul-2019)
 
 - Fixed an issue where an attempt to download from channel always resulted in an error. Updated to YoutubeExplode v4.7.5
-
-### v1.5.3.1 (04-Jul-2019)
-
-- Added a global setting for default download folder
-- mp3 is the default format if you start the app for the first time
-- Updated ffmpeg to v4.1
-- German translation
-- small ui changes
 
 ### v1.5.2 (29-Jun-2019)
 

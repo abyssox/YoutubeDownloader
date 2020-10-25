@@ -41,7 +41,7 @@ namespace YoutubeDownloader.ViewModels.Framework
             return dialogScreen.DialogResult;
         }
 
-        public string? PromptSaveFilePath(string filter = "Alle Dateien|*.*", string defaultFilePath = "")
+        public string? PromptSaveFilePath(string filter = "All files|*.*", string defaultFilePath = "")
         {
             // Create dialog
             var dialog = new VistaSaveFileDialog

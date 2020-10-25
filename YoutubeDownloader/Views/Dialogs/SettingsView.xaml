@@ -9,7 +9,7 @@
     xmlns:s="https://github.com/canton7/Stylet"
     MinWidth="300"
     d:DataContext="{d:DesignInstance Type=dialogs:SettingsViewModel}"
-    d:DesignHeight="530"
+    d:DesignHeight="450"
     d:DesignWidth="800"
     Style="{DynamicResource MaterialDesignRoot}"
     mc:Ignorable="d">
@@ -17,59 +17,100 @@
         <TextBlock
             Margin="16"
             FontSize="17"
-            Foreground="{DynamicResource PrimaryTextBrush}"
-            Text="Einstellungen" />
+            Text="Settings" />
 
-        <!--  Default download directory  -->
-        <StackPanel Background="Transparent">
-            <TextBlock Margin="16,8" Text="Standard Download Verzeichnis:" />
-            <TextBox
+        <!--  Auto-updates  -->
+        <DockPanel Background="Transparent" LastChildFill="False">
+            <DockPanel.ToolTip>
+                <TextBlock>
+                    <Run Text="Perform automatic updates on every launch" />
+                    <LineBreak />
+                    <Run FontWeight="SemiBold" Text="Warning:" />
+                    <Run Text="disabling this is NOT recommended because the application will stop working when integration with YouTube inevitably breaks in the future" />
+                </TextBlock>
+            </DockPanel.ToolTip>
+            <TextBlock
                 Margin="16,8"
-                IsReadOnly="True"
-                PreviewMouseLeftButtonDown="OnClickBrowse"
-                Text="{Binding DefaultDownloadDirectory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                ToolTip="Hier klicken um ein anderes Verzeichnis auszuwählen" />
-        </StackPanel>
-
-        <!--  Max concurrent downloads  -->
-        <StackPanel Background="Transparent" ToolTip="Wie viele Downloads dürfen gleichzeitig aktiv sein">
-            <TextBlock Margin="16,8">
-                <Run Text="Maximale Anzahl gleichzeitiger Downloads:" />
-                <Run FontWeight="DemiBold" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
-            </TextBlock>
-            <Slider
+                DockPanel.Dock="Left"
+                Text="Auto-updates" />
+            <ToggleButton
                 Margin="16,8"
-                IsSnapToTickEnabled="True"
-                Maximum="10"
-                Minimum="1"
-                TickFrequency="1"
-                Value="{Binding MaxConcurrentDownloads}" />
-        </StackPanel>
+                DockPanel.Dock="Right"
+                IsChecked="{Binding IsAutoUpdateEnabled}" />
+        </DockPanel>
 
-        <!--  Default file name template  -->
+        <!--  Dark mode  -->
+        <DockPanel
+            Background="Transparent"
+            LastChildFill="False"
+            ToolTip="Use darker colors in the UI">
+            <TextBlock
+                Margin="16,8"
+                DockPanel.Dock="Left"
+                Text="Dark mode" />
+            <ToggleButton
+                x:Name="DarkModeToggleButton"
+                Margin="16,8"
+                Checked="DarkModeToggleButton_Checked"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding IsDarkModeEnabled}"
+                Unchecked="DarkModeToggleButton_Unchecked" />
+        </DockPanel>
+
+        <!--  Inject tags  -->
+        <DockPanel
+            Background="Transparent"
+            LastChildFill="False"
+            ToolTip="Media tags can be automatically inferred from video title and injected into output file">
+            <TextBlock
+                Margin="16,8"
+                DockPanel.Dock="Left"
+                Text="Automatically inject media tags" />
+            <ToggleButton
+                Margin="16,8"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding ShouldInjectTags}" />
+        </DockPanel>
+
+        <!--  Skip existing files  -->
+        <DockPanel
+            Background="Transparent"
+            LastChildFill="False"
+            ToolTip="When selecting multiple videos to download, skip those that already have a matching file in the directory">
+            <TextBlock
+                Margin="16,8"
+                DockPanel.Dock="Left"
+                Text="Skip downloads for files that already exist" />
+            <ToggleButton
+                Margin="16,8"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding ShouldSkipExistingFiles}" />
+        </DockPanel>
+
+        <!--  File name template  -->
         <TextBox
             Margin="16,8"
-            materialDesign:HintAssist.Hint="Vorlage Dateinamen"
+            materialDesign:HintAssist.Hint="File name template"
             materialDesign:HintAssist.IsFloating="True"
             Text="{Binding FileNameTemplate}">
             <TextBox.ToolTip>
                 <TextBlock>
-                    <Run Text="Dateinamen Vorlage die für heruntergeladene Videos verwendet wird" />
+                    <Run Text="Template used for generating file names for downloaded videos" />
                     <LineBreak />
                     <LineBreak />
-                    <Run Text="Verfügbare Variablen:" />
+                    <Run Text="Available variables:" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$num" />
-                    <Run Text="- Position des Videos in der Liste (falls verfügbar)" />
+                    <Run Text="- video's position in the list (if applicable)" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$title" />
-                    <Run Text="- Titel" />
+                    <Run Text="- video title" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$author" />
-                    <Run Text="- Author" />
+                    <Run Text="- video author" />
                     <LineBreak />
                     <Run FontWeight="SemiBold" Text="$uploadDate" />
-                    <Run Text="- Uploaddatum" />
+                    <Run Text="- video upload date" />
                 </TextBlock>
             </TextBox.ToolTip>
         </TextBox>
@@ -77,99 +118,40 @@
         <!--  Excluded container formats  -->
         <TextBox
             Margin="16,8"
-            materialDesign:HintAssist.Hint="Ausgeschlossene Container-Formate"
+            materialDesign:HintAssist.Hint="Excluded container formats"
             materialDesign:HintAssist.IsFloating="True"
             Text="{Binding ExcludedContainerFormats}">
             <TextBox.ToolTip>
                 <TextBlock>
-                    <Run Text="Kommagetrennte Liste von Containerformaten, die beim Herunterladen eines Videos aus der Formatliste ausgeschlossen werden" />
+                    <Run Text="Comma separated list of container formats excluded from format list when downloading a video" />
                     <LineBreak />
                     <LineBreak />
-                    <Run Text="Bsp: webm,ogg" />
+                    <Run Text="Ex: webm,ogg" />
                 </TextBlock>
             </TextBox.ToolTip>
         </TextBox>
 
-        <!--  Auto-updates  -->
-        <!--
-        <DockPanel Background="Transparent" LastChildFill="False">
-            <DockPanel.ToolTip>
-                <TextBlock>
-                    <Run Text="Bei jedem Start automatisch nach Updates suchen" />
-                    <LineBreak />
-                    <Run FontWeight="SemiBold" Text="Warnung:" />
-                    <Run Text="Deaktivierung wird NICHT empfohlen, da die Anwendung nicht mehr funktioniert wenn Youtube Änderungen vornimmt" />
-                </TextBlock>
-            </DockPanel.ToolTip>
-            <TextBlock
-                Margin="16,8"
-                DockPanel.Dock="Left"
-                Text="Automatische Updates" />
-            <ToggleButton
-                Margin="16,8"
-                DockPanel.Dock="Right"
-                IsChecked="{Binding IsAutoUpdateEnabled}" />
-        </DockPanel>
-        -->
-
-        <!--  Tag injection  -->
-        <!--
-        <DockPanel
-            Background="Transparent"
-            LastChildFill="False"
-            ToolTip="Media Tags können automatisch vom Videotitel abgeleitet und in die Ausgabedatei eingefügt werden">
-            <TextBlock
-                Margin="16,8"
-                DockPanel.Dock="Left"
-                Text="Media Tags automatisch hinzufügen" />
-            <ToggleButton
-                Margin="16,8"
-                DockPanel.Dock="Right"
-                IsChecked="{Binding ShouldInjectTags}" />
-        </DockPanel>
-        -->
-
-        <!--  Skip existing files  -->
-        <DockPanel
-            Background="Transparent"
-            LastChildFill="False"
-            ToolTip="Wenn Sie mehrere Videos zum Herunterladen auswählen werden diejenigen übersprungen, für die bereits eine passende Datei im Downloadverzeichnis existiert">
-            <TextBlock
-                Margin="16,8"
-                DockPanel.Dock="Left"
-                Text="Downloads für bereits existierende Dateien überspringen" />
-            <ToggleButton
-                Margin="16,8"
-                DockPanel.Dock="Right"
-                IsChecked="{Binding ShouldSkipExistingFiles}" />
-        </DockPanel>
-
-        <!--  Dark Theme  -->
-        <DockPanel
-            Background="Transparent"
-            LastChildFill="False"
-            ToolTip="Dunkles Farblayout aktivieren">
-            <TextBlock
-                Margin="16,8"
-                DockPanel.Dock="Left"
-                Text="Dunkles Farblayout" />
-            <ToggleButton
-                Margin="16,8"
-                Checked="DarkThemeToggle_Checked"
-                DockPanel.Dock="Right"
-                IsChecked="{Binding IsDarkThemeEnabled}"
-                Unchecked="DarkThemeToggle_Unchecked" />
-        </DockPanel>
-
-
-
+        <!--  Max concurrent downloads  -->
+        <StackPanel Background="Transparent" ToolTip="How many downloads can be active at one time">
+            <TextBlock Margin="16,8,16,4">
+                <Run Text="Maximum concurrent downloads:" />
+                <Run FontWeight="DemiBold" Text="{Binding MaxConcurrentDownloads, Mode=OneWay}" />
+            </TextBlock>
+            <Slider
+                Margin="16,4,16,8"
+                IsSnapToTickEnabled="True"
+                Maximum="10"
+                Minimum="1"
+                TickFrequency="1"
+                Value="{Binding MaxConcurrentDownloads}" />
+        </StackPanel>
 
         <!--  Save button  -->
         <Button
             Margin="8"
             HorizontalAlignment="Right"
             Command="{s:Action Close}"
-            Content="SPEICHERN"
+            Content="SAVE"
             IsCancel="True"
             IsDefault="True"
             Style="{DynamicResource MaterialDesignFlatButton}" />

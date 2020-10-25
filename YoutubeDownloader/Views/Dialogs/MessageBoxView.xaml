@@ -24,7 +24,7 @@
             Grid.Row="0"
             Margin="8,16"
             FontSize="19"
-            Foreground="{DynamicResource PrimaryTextBrush}"
+            FontWeight="SemiBold"
             Text="{Binding Title}"
             TextTrimming="CharacterEllipsis"
             ToolTip="{Binding Title}" />
@@ -42,7 +42,7 @@
             Margin="8"
             HorizontalAlignment="Right"
             Command="{s:Action Close}"
-            Content="SCHLIESSEN"
+            Content="CLOSE"
             IsCancel="True"
             IsDefault="True"
             Style="{DynamicResource MaterialDesignFlatButton}" />
