@@ -30,6 +30,7 @@ namespace YoutubeDownloader.ViewModels.Dialogs
         public VideoDownloadOption? SelectedVideoOption { get; set; }
 
         public SubtitleDownloadOption? SelectedSubtitleOption { get; set; }
+        public bool ShouldDownloadSubtitles { get; set; }
 
         public DownloadSingleSetupViewModel(
             IViewModelFactory viewModelFactory,
@@ -51,7 +52,8 @@ namespace YoutubeDownloader.ViewModels.Dialogs
             // Select first subtitle download option matching last used language
             SelectedSubtitleOption =
                 AvailableSubtitleOptions.FirstOrDefault(o =>
-                    o.TrackInfo.Language.Code == _settingsService.LastSubtitleLanguageCode);
+                    o.TrackInfo.Language.Code == _settingsService.LastSubtitleLanguageCode) ??
+                AvailableSubtitleOptions.FirstOrDefault();
         }
 
         public bool CanConfirm => SelectedVideoOption != null;
@@ -81,7 +83,7 @@ namespace YoutubeDownloader.ViewModels.Dialogs
                 filePath,
                 format,
                 SelectedVideoOption,
-                SelectedSubtitleOption
+                ShouldDownloadSubtitles ? SelectedSubtitleOption : null
             );
 
             // Create empty file to "lock in" the file path.
