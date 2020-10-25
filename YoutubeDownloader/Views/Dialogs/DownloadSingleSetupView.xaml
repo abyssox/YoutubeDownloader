@@ -71,7 +71,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Background="Black"
-                 FontWeight="Light"
+                FontWeight="Light"
                 Foreground="White"
                 Text="{Binding Video.Duration}" />
         </Grid>
