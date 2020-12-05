@@ -1,4 +1,9 @@
-﻿### v1.7.15 (25-Oct-2020)
+﻿### v1.7.16 (29-Nov-2020)
+
+- Fixed various YouTube-related issues. Updated to YoutubeExplode v5.1.9.
+- Fixed an issue where excluded formats were ignored when downloading multiple videos. (Thanks [@derech1e](https://github.com/derech1e))
+
+### v1.7.15 (25-Oct-2020)
 
 - Added subtitle download option when downloading single videos. (Thanks [@beawolf](https://github.com/beawolf))
 - Added format exclusion list. You can configure in settings a list of containers which you would like to not see, and they will be filtered out in the format selection dropdown. (Thanks [@beawolf](https://github.com/beawolf))
